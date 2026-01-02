@@ -9,7 +9,8 @@ func GetFoods(page, perPage int, withNutrition bool) ([]Food, int64) {
 	var foods []Food
 	var total int64
 
-	q := database.DB.Model(&Food{})
+	q := database.DB.Model(&Food{}).
+		Where("food_type = ?", "Generic")
 
 	q.Count(&total)
 
