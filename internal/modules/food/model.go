@@ -7,6 +7,7 @@ package food
 type Food struct {
 	ID       uint          `json:"id" gorm:"column:id;primaryKey"`
 	Name     string        `json:"name" gorm:"column:name"`
+	FoodType string        `json:"food_type" gorm:"column:food_type"`
 	Servings []FoodServing `json:"servings" gorm:"foreignKey:FoodID;references:ID"`
 }
 
