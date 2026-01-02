@@ -5,7 +5,8 @@ import (
 
 	"github.com/ridhopujiono/nusanfood-api/internal/config"
 	"github.com/ridhopujiono/nusanfood-api/internal/database"
-	httpRoutes "github.com/ridhopujiono/nusanfood-api/internal/http"
+	"github.com/ridhopujiono/nusanfood-api/internal/http/handlers"
+	"github.com/ridhopujiono/nusanfood-api/internal/http/middleware"
 )
 
 func main() {
@@ -13,9 +14,18 @@ func main() {
 	database.Connect()
 
 	r := gin.Default()
-	httpRoutes.Register(r)
 
-    port := config.Get("APP_PORT", "8080")
-    r.Run(":" + port)
+	api := r.Group("/api")
+
+	api.POST("/auth/login", handlers.Login)
+
+	protected := api.Group("/")
+	protected.Use(middleware.JWTAuth())
+	{
+		protected.GET("/foods", handlers.GetFoods)
+	}
+
+	port := config.Get("APP_PORT", "8080")
+	r.Run(":" + port)
 
 }
