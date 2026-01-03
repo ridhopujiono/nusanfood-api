@@ -20,3 +20,7 @@ func FindByEmail(email string) (*User, error) {
 
 	return &user, err
 }
+
+func Create(user *User) error {
+	return database.DB.Create(user).Error
+}

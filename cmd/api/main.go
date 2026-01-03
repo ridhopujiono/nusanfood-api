@@ -21,7 +21,11 @@ func main() {
 
 	api := r.Group("/api")
 
-	api.POST("/auth/login", handlers.Login)
+	auth := api.Group("/auth")
+	{
+		auth.POST("/register", handlers.Register)
+		auth.POST("/login", handlers.Login)
+	}
 
 	protected := api.Group("/")
 	protected.Use(middleware.JWTAuth())
