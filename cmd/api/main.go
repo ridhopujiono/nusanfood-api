@@ -31,6 +31,8 @@ func main() {
 	protected.Use(middleware.JWTAuth())
 	{
 		protected.GET("/foods", handlers.GetFoods)
+
+		protected.POST("/recipes", handlers.CreateRecipe)
 	}
 
 	port := config.Get("APP_PORT", "8080")
