@@ -33,6 +33,7 @@ func main() {
 		protected.GET("/foods", handlers.GetFoods)
 
 		protected.POST("/recipes", handlers.CreateRecipe)
+		protected.POST("/upload", handlers.UploadFile)
 	}
 
 	port := config.Get("APP_PORT", "8080")
