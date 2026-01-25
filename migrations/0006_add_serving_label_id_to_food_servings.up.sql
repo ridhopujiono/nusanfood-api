@@ -1,0 +1,1 @@
+ALTER TABLE food_servings ADD COLUMN serving_label_id VARCHAR(255) DEFAULT NULL AFTER serving_label;
