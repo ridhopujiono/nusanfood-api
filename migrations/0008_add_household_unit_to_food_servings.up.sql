@@ -1,0 +1,1 @@
+ALTER TABLE food_servings ADD COLUMN household_unit_id VARCHAR(255) DEFAULT NULL AFTER household_unit

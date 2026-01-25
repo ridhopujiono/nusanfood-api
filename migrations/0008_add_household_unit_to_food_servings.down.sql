@@ -1,0 +1,1 @@
+ALTER TABLE food_servings DROP COLUMN household_unit_id;
