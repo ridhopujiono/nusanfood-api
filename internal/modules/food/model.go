@@ -21,11 +21,12 @@ func (Food) TableName() string {
 // =======================
 
 type FoodServing struct {
-	ID           uint    `json:"id" gorm:"column:id;primaryKey"`
-	FoodID       uint    `json:"food_id" gorm:"column:food_id"`
-	ServingLabel string  `json:"serving_label" gorm:"column:serving_label"`
-	MetricAmount float64 `json:"metric_amount" gorm:"column:metric_amount"`
-	MetricUnit   string  `json:"metric_unit" gorm:"column:metric_unit"`
+	ID             uint    `json:"id" gorm:"column:id;primaryKey"`
+	FoodID         uint    `json:"food_id" gorm:"column:food_id"`
+	ServingLabel   string  `json:"serving_label" gorm:"column:serving_label"`
+	ServingLabelID string  `json:"serving_label_id" gorm:"column:serving_label_id"`
+	MetricAmount   float64 `json:"metric_amount" gorm:"column:metric_amount"`
+	MetricUnit     string  `json:"metric_unit" gorm:"column:metric_unit"`
 
 	Nutrition NutritionFact `json:"nutrition" gorm:"foreignKey:ServingID;references:ID"`
 }
